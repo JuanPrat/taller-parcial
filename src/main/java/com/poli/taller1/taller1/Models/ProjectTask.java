@@ -7,6 +7,8 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.Valid;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 
@@ -38,9 +40,13 @@ public class ProjectTask {
     private String status;
 
     @Column
+    @Min(value = 1, message = "la prioridad debe de ser mayor a 1")
+    @Max(value = 5, message = "la prioridad debe de ser menor a 5")
     private Integer priority;
 
     @Column
+    @Min(value = 1, message = "la prioridad debe de ser mayor a 1")
+    @Max(value = 8, message = "la prioridad debe de ser menor a 8")
     private Double hours;
 
     @Column
