@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 @Entity
@@ -20,15 +21,18 @@ public class ProjectTask {
     private Long id;
 
     @Column
+    @NotNull(message = "No puede estar en blanco")
     private String nombre;
 
     @Column
+    @NotNull(message = "No puede estar en blanco")
     private String summary;
 
     @Column
     private String acceptanceCriteria;
 
     @Column
+
     private String status;
 
     @Column
