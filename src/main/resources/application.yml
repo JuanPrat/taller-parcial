@@ -1,0 +1,18 @@
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:h2:mem:taller1
+    driverClassName: org.h2.Driver
+    username: sa
+    password: password
+    hikari:
+      idle-timeout: 10000
+  jpa:
+    spring.jpa.database-platform: org.hibernate.dialect.H2Dialect
+  application:
+    name: service-taller
+  cloud:
+    config:
+      uri: http://localhost:9000
+      username: admin
+      password: admin
