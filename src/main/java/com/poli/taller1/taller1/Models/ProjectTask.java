@@ -56,7 +56,7 @@ public class ProjectTask {
     @Column
     private Date endDate;
 
-    @Column
+    @Column(updatable = false)
     private String projectIdentifier;
 
     @JsonBackReference
