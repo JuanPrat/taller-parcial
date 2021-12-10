@@ -6,6 +6,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 import java.util.Date;
 
@@ -20,12 +21,13 @@ public class Project {
     @Column(unique = true, nullable = false)
     private Long id;
 
-    @Column
+    @Column(unique = true)
     @NotNull(message = "No puede estar en blanco")
     private String projectName;
 
-    @Column
+    @Column(unique = true, updatable = false)
     @NotNull(message = "No puede estar en blanco")
+    @Size(min = 5, max = 7)
     private String projectIdentifier;
 
     @Column
