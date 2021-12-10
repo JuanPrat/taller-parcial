@@ -5,13 +5,15 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Entity
 @Getter
 @Setter
 @Table(name = "project")
-public class ProjectModel {
+public class Project {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,21 +21,23 @@ public class ProjectModel {
     private Long id;
 
     @Column
+    @NotNull(message = "No puede estar en blanco")
     private String projectName;
 
     @Column
+    @NotNull(message = "No puede estar en blanco")
     private String projectIdentifier;
 
     @Column
+    @NotNull(message = "No puede estar en blanco")
     private String description;
 
     @Column
-    private LocalDateTime startDate;
+    private Date startDate;
 
     @Column
-    private LocalDateTime endDate;
+    private Date endDate;
 
-    //Relación con backlog
     @OneToOne(mappedBy="project")
-    private BacklogModel backlog;
+    private Backlog backlog;
 }

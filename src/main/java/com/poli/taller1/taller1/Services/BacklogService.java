@@ -1,6 +1,6 @@
 package com.poli.taller1.taller1.Services;
 
-import com.poli.taller1.taller1.Models.BacklogModel;
+import com.poli.taller1.taller1.Models.Backlog;
 import com.poli.taller1.taller1.Repositories.BacklogRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,17 +14,17 @@ public class BacklogService {
     BacklogRepository backlogRepository;
 
     //Crear
-    public BacklogModel crearBacklog(BacklogModel backlog){
+    public Backlog crearBacklog(Backlog backlog){
         return backlogRepository.save(backlog);
     }
 
     //Mostrar
-    public List<BacklogModel> mostrarBacklogs(){
-        return (List<BacklogModel>) backlogRepository.findAll();
+    public List<Backlog> mostrarBacklogs(){
+        return (List<Backlog>) backlogRepository.findAll();
     }
 
     //Editar
-    public BacklogModel editarBacklog(BacklogModel backlog){
+    public Backlog editarBacklog(Backlog backlog){
         return backlogRepository.save(backlog);
     }
 

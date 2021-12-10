@@ -7,13 +7,12 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.Objects;
 
 @Entity
 @Getter
 @Setter
 @Table(name = "projecttask")
-public class ProjectTaskModel {
+public class ProjectTask {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -51,5 +50,5 @@ public class ProjectTaskModel {
     @JsonBackReference
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "backlog_id")
-    private BacklogModel backlog;
+    private Backlog backlog;
 }

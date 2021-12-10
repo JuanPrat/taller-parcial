@@ -1,6 +1,6 @@
 package com.poli.taller1.taller1.Services;
 
-import com.poli.taller1.taller1.Models.ProjectTaskModel;
+import com.poli.taller1.taller1.Models.ProjectTask;
 import com.poli.taller1.taller1.Repositories.ProjectTaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,17 +14,17 @@ public class ProjectTaskService {
     ProjectTaskRepository projectTaskRepository;
 
     //Crear
-    public ProjectTaskModel crearProjectTask(ProjectTaskModel projectTask){
+    public ProjectTask crearProjectTask(ProjectTask projectTask){
         return projectTaskRepository.save(projectTask);
     }
 
     //Mostrar
-    public List<ProjectTaskModel> mostrarProjectTask(){
-        return (List<ProjectTaskModel>) projectTaskRepository.findAll();
+    public List<ProjectTask> mostrarProjectTask(){
+        return (List<ProjectTask>) projectTaskRepository.findAll();
     }
 
     //Editar
-    public ProjectTaskModel editarProjectTask(ProjectTaskModel project){
+    public ProjectTask editarProjectTask(ProjectTask project){
         return projectTaskRepository.save(project);
     }
 
