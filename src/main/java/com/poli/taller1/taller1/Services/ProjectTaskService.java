@@ -13,30 +13,16 @@ public class ProjectTaskService {
     @Autowired
     ProjectTaskRepository projectTaskRepository;
 
-    //Crear
     public ProjectTask crearProjectTask(ProjectTask projectTask){
         return projectTaskRepository.save(projectTask);
     }
 
-    //Mostrar
     public List<ProjectTask> mostrarProjectTask(){
         return (List<ProjectTask>) projectTaskRepository.findAll();
     }
 
-    //Editar
     public ProjectTask editarProjectTask(ProjectTask project){
         return projectTaskRepository.save(project);
     }
-
-    //Eliminar
-    public boolean eliminarProjectTask(Long id){
-        try {
-            projectTaskRepository.deleteById(id);
-            return true;
-        }catch (Exception error){
-            return false;
-        }
-    }
-
 
 }

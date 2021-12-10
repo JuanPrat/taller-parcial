@@ -13,22 +13,18 @@ public class BacklogService {
     @Autowired
     BacklogRepository backlogRepository;
 
-    //Crear
     public Backlog crearBacklog(Backlog backlog){
         return backlogRepository.save(backlog);
     }
 
-    //Mostrar
     public List<Backlog> mostrarBacklogs(){
         return (List<Backlog>) backlogRepository.findAll();
     }
 
-    //Editar
     public Backlog editarBacklog(Backlog backlog){
         return backlogRepository.save(backlog);
     }
 
-    //Eliminar
     public boolean eliminarBacklog(Long id){
         try {
             backlogRepository.deleteById(id);

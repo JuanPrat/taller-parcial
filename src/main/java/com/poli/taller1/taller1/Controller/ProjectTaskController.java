@@ -93,13 +93,18 @@ public class ProjectTaskController {
         return ResponseEntity.ok(horasProyecto.get(0));
     }
 
-    @DeleteMapping(path = "/{id}/{projectIdentifier}")
-    public String eliminarProjectTask(@PathVariable Long id, @PathVariable String projectIdentifier){
-        boolean seElimino = projectTaskService.eliminarProjectTask(id);
-        if(seElimino){
-            return "Se elimino";
+    @PutMapping(path = "/{id}/{projectIdentifier}")
+    public ResponseEntity<String> eliminarProjectTask(@PathVariable Long id, @PathVariable String projectIdentifier){
+        ProjectTask taskToDelete = projectTaskService.mostrarProjectTask()
+                .stream().filter(projectTask -> projectTask.getId().equals(id))
+                .filter(projectTask -> projectTask.getProjectIdentifier().equals(projectIdentifier))
+                .collect(Collectors.toList()).get(0);
+        taskToDelete.setStatus("deleted");
+        ProjectTask projectTaskUpdated = projectTaskService.editarProjectTask(taskToDelete);
+        if(projectTaskUpdated.getStatus().equals("deleted")){
+            return ResponseEntity.ok().body("Se elimino");
         }
-        return "No se pudo eliminar el usuario con el id " + id;
+        return ResponseEntity.ok().body("No se pudo eliminar la tarea con id "+ id + " y project id "+ projectIdentifier);
     }
 
 }
