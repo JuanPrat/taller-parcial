@@ -23,11 +23,6 @@ public class BacklogController {
     @Autowired
     private Validator validator;
 
-    @GetMapping(value = "/obtenerBacklogs")
-    public List<Backlog> mostrarBacklogs(){
-        return backlogService.obtenerBacklogs();
-    }
-
     @PostMapping(value = "/crearBacklog")
     @Validated
     public ResponseEntity<Backlog> crearBacklog(@Valid @RequestBody Backlog backlog, BindingResult bindingResult) {
