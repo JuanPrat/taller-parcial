@@ -22,16 +22,4 @@ public class ProjectService {
         return (List<Project>) projectRepository.findAll();
     }
 
-    public Project editarProject(Project projectTask){
-        return projectRepository.save(projectTask);
-    }
-
-    public boolean eliminarProject(Long id){
-        try {
-            projectRepository.deleteById(id);
-            return true;
-        }catch (Exception error){
-            return false;
-        }
-    }
 }

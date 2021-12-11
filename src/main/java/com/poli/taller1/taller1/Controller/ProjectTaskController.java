@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.net.URI;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -102,7 +103,7 @@ public class ProjectTaskController {
         taskToDelete.setStatus("deleted");
         ProjectTask projectTaskUpdated = projectTaskService.editarProjectTask(taskToDelete);
         if(projectTaskUpdated.getStatus().equals("deleted")){
-            return ResponseEntity.ok().body("Se elimino");
+            return ResponseEntity.ok().body("Se eliminó la tarea satisfactoriamente");
         }
         return ResponseEntity.ok().body("No se pudo eliminar la tarea con id "+ id + " y project id "+ projectIdentifier);
     }

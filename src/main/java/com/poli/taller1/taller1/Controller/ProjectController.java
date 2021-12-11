@@ -46,19 +46,4 @@ public class ProjectController {
         Project projectCreated = projectService.crearProject(project);
         return ResponseEntity.created(URI.create("/crearProyecto")).body(projectCreated);
     }
-
-    @PutMapping("/actualizarProyecto")
-    public Project editarProject(@RequestBody Project project) {
-        return projectService.crearProject(project);
-    }
-
-    @DeleteMapping(path = "eliminar/{id}")
-    public String eliminarProject(@PathVariable("id") Long id) {
-        boolean seElimino = projectService.eliminarProject(id);
-        if (seElimino) {
-            return "Se elimino";
-        }
-        return "No se pudo eliminar el usuario con el id " + id;
-    }
-
 }

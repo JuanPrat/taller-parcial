@@ -17,21 +17,8 @@ public class BacklogService {
         return backlogRepository.save(backlog);
     }
 
-    public List<Backlog> mostrarBacklogs(){
+    public List<Backlog> obtenerBacklogs(){
         return (List<Backlog>) backlogRepository.findAll();
-    }
-
-    public Backlog editarBacklog(Backlog backlog){
-        return backlogRepository.save(backlog);
-    }
-
-    public boolean eliminarBacklog(Long id){
-        try {
-            backlogRepository.deleteById(id);
-            return true;
-        }catch (Exception error){
-            return false;
-        }
     }
 
 }

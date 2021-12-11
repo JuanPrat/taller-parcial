@@ -8,13 +8,10 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.ConstraintViolation;
 import javax.validation.Valid;
 import javax.validation.Validator;
 import java.net.URI;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @RestController
 @RequestMapping("/backlog")
@@ -28,30 +25,16 @@ public class BacklogController {
 
     @GetMapping(value = "/obtenerBacklogs")
     public List<Backlog> mostrarBacklogs(){
-        return backlogService.mostrarBacklogs();
+        return backlogService.obtenerBacklogs();
     }
 
     @PostMapping(value = "/crearBacklog")
     @Validated
-    public ResponseEntity<Backlog> crearBacklog(@Valid @RequestBody Backlog backlog, BindingResult bindingResult){
-            if(bindingResult.hasErrors()){
-                return ResponseEntity.status(400).build();
-            }
-            Backlog backlogCreated = backlogService.crearBacklog(backlog);
-            return ResponseEntity.created(URI.create("/crearBacklog")).body(backlogCreated);
-    }
-
-    @PutMapping(value = "/editarBacklog")
-    public Backlog editarBacklog(@RequestBody Backlog backlog){
-        return backlogService.crearBacklog(backlog);
-    }
-
-    @DeleteMapping(path = "/{id}")
-    public String eliminarBacklog(@PathVariable("id") Long id){
-        boolean fueEliminado = backlogService.eliminarBacklog(id);
-        if(fueEliminado){
-            return "el backlog fue eliminado";
+    public ResponseEntity<Backlog> crearBacklog(@Valid @RequestBody Backlog backlog, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return ResponseEntity.status(400).build();
         }
-        return "Error al eliminar el backlog con id" + id;
+        Backlog backlogCreated = backlogService.crearBacklog(backlog);
+        return ResponseEntity.created(URI.create("/crearBacklog")).body(backlogCreated);
     }
 }
